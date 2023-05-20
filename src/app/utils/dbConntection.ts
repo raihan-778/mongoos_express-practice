@@ -4,17 +4,17 @@ import cors from "cors";
 import "dotenv/config";
 import { log } from "./logger";
 
-const { dbUri } = process.env;
+const { dataUri } = process.env;
 const dbConnection = mongoose.connection;
 const dataCollection = dbConnection.collection("practice_data");
 
 const dbConnect = async (): Promise<void> => {
   try {
-    if (!dbUri) {
+    if (!dataUri) {
       log.error("NO Uri found in env file!!");
       process.exit(1);
     }
-    await mongoose.connect(dbUri);
+    await mongoose.connect(dataUri);
   } catch (err: any) {
     log.error(err.message);
   }
