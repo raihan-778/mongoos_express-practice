@@ -1,13 +1,4 @@
-import express, { Application } from "express";
-const app: Application = express();
-import cors from "cors";
-import "dotenv/config";
-import mongoose from "mongoose";
-
-app.use(cors());
-//parse data
-app.use(express.json());
-app.use(express.urlencoded({ extended: false })); // if it "true" then it will take any type of data and if it false it will take only json & string data.
+import app from "./app";
 
 const { dataUri } = process.env;
 console.log(dataUri);
@@ -28,6 +19,15 @@ const dbConnect = async () => {
         status: 200,
       },
     });
+  });
+
+  //get data using collection name
+  const dataBase = mongoose.connection;
+  const newCollection = dataBase.collection("practice_data");
+
+  app.get("/persons", async (req, res) => {
+    const result = await newCollection.find({}).limit(20).toArray();
+    res.send(result);
   });
 };
 dbConnect();
