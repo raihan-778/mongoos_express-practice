@@ -1,5 +1,5 @@
-import { pino } from "pino";
-import PinoPretty from "pino-pretty";
+const pino = require("pino");
+const PinoPretty = require("pino-pretty");
 import dayjs from "dayjs";
 
 const log = pino({
@@ -10,6 +10,6 @@ const log = pino({
     },
   },
   prettifier: PinoPretty,
-  timestamp: () => `"time":"${dayjs().format()}"`,
+  timestamp: () => `🕰 "${dayjs().format()}"`,
 });
 export { log };

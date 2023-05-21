@@ -12,13 +12,21 @@ app.use(express.urlencoded({ extended: false })); // if it "true" then it will t
 
 //db connection
 dbConnect();
+//render ejs
+app.set("view engine", "ejs");
 
 //we will import all route here
 
+import ProductRoute from "./app/modules/product/product.router";
+
 //here will be default route
 
-//custom route path
+app.get("/", (req, res) => {
+  res.render("index");
+});
 
+//custom route path
+app.use("/api/v1/products", ProductRoute);
 //export express app
 
 export { app };

@@ -15,6 +15,8 @@ const dbConnect = async (): Promise<void> => {
       process.exit(1);
     }
     await mongoose.connect(dataUri);
+    log.info(`🛢️Database connection established`);
+    // console.log(`🛢️  Database connection established`);
   } catch (err: any) {
     log.error(err.message);
   }
