@@ -1,12 +1,14 @@
 import mongoose from "mongoose";
-import { Express } from "express";
-import cors from "cors";
+
 import "dotenv/config";
 import { log } from "./logger";
 
 const { dataUri } = process.env;
+
 const dbConnection = mongoose.connection;
-const dataCollection = dbConnection.collection("practice_data");
+const DbCollection = dbConnection.collection("products");
+console.log(DbCollection.name);
+// const  dataUri  = process.env;
 
 const dbConnect = async (): Promise<void> => {
   try {
@@ -16,6 +18,7 @@ const dbConnect = async (): Promise<void> => {
     }
     await mongoose.connect(dataUri);
     log.info(`🛢️Database connection established`);
+
     // console.log(`🛢️  Database connection established`);
   } catch (err: any) {
     log.error(err.message);

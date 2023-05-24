@@ -2,7 +2,7 @@ import express, { Application } from "express";
 
 import cors from "cors";
 import "dotenv/config";
-import mongoose from "mongoose";
+
 import { dbConnect } from "./app/utils/dbConntection";
 const app: Application = express();
 app.use(cors());
@@ -18,15 +18,18 @@ app.set("view engine", "ejs");
 //we will import all route here
 
 import ProductRoute from "./app/modules/product/product.router";
+import { getAllProduct } from "./app/modules/product/product.controller";
 
 //here will be default route
 
 app.get("/", (req, res) => {
   res.render("index");
 });
+app.get("/getAllProduct", getAllProduct);
 
 //custom route path
 app.use("/api/v1/products", ProductRoute);
+
 //export express app
 
 export { app };
