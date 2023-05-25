@@ -1,4 +1,6 @@
 const pino = require("pino");
+module.exports = pino({});
+
 const PinoPretty = require("pino-pretty");
 import dayjs from "dayjs";
 

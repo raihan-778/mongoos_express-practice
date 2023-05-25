@@ -16,19 +16,23 @@ dbConnect();
 app.set("view engine", "ejs");
 
 //we will import all route here
-
 import ProductRoute from "./app/modules/product/product.router";
-import { getAllProduct } from "./app/modules/product/product.controller";
+import {
+  getAllProduct,
+  getProductById,
+} from "./app/modules/product/product.controller";
 
 //here will be default route
-
+app.use("/api/v1/products", ProductRoute);
 app.get("/", (req, res) => {
   res.render("index");
 });
 
 //custom route path
-app.use("/api/v1/products", ProductRoute);
-app.get("/getAllProduct", getAllProduct);
+
+app.get("/allProduct", getAllProduct);
+app.get("/:id", getProductById);
+
 //export express app
 
 export { app };

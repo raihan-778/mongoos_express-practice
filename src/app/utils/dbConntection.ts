@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
 
 import "dotenv/config";
-import { log } from "./logger";
+import { log } from "../utils/logger";
 
 const { dataUri } = process.env;
 console.log(dataUri);
 
 const dbConnection = mongoose.connection;
-const DbCollection = dbConnection.collection("test_product");
+const DbCollection = dbConnection.collection("products");
 console.log(DbCollection.name);
 
 const dbConnect = async (): Promise<void> => {
