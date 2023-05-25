@@ -4,11 +4,11 @@ import "dotenv/config";
 import { log } from "./logger";
 
 const { dataUri } = process.env;
+console.log(dataUri);
 
 const dbConnection = mongoose.connection;
-const DbCollection = dbConnection.collection("products");
+const DbCollection = dbConnection.collection("test_product");
 console.log(DbCollection.name);
-// const  dataUri  = process.env;
 
 const dbConnect = async (): Promise<void> => {
   try {

@@ -25,11 +25,10 @@ import { getAllProduct } from "./app/modules/product/product.controller";
 app.get("/", (req, res) => {
   res.render("index");
 });
-app.get("/getAllProduct", getAllProduct);
 
 //custom route path
 app.use("/api/v1/products", ProductRoute);
-
+app.get("/getAllProduct", getAllProduct);
 //export express app
 
 export { app };

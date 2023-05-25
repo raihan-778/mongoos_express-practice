@@ -8,4 +8,5 @@ export const getAllProduct = async (
 ) => {
   const products = await getAllProductFromDB();
   res.send(products);
+  console.log("hitted all product api", products);
 };
