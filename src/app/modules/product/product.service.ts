@@ -5,7 +5,7 @@ export const getAllProductFromDB = async (): Promise<IProduct[]> => {
   return Product.find();
 };
 export const getProductsByIdFromDB = async (
-  payload: string
+  id: string
 ): Promise<IProduct[]> => {
-  return Product.find({ id: payload });
+  return Product.find({ _id: id });
 };

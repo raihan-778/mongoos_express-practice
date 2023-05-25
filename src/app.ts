@@ -22,14 +22,13 @@ import {
   getProductById,
 } from "./app/modules/product/product.controller";
 
-//here will be default route
-app.use("/api/v1/products", ProductRoute);
 app.get("/", (req, res) => {
   res.render("index");
 });
 
 //custom route path
-
+//here will be default route
+app.use("/api/v1/products", ProductRoute);
 app.get("/allProduct", getAllProduct);
 app.get("/:id", getProductById);
 

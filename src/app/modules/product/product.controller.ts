@@ -1,3 +1,4 @@
+import { sendApiResponse } from "./../../utils/respponse_handler";
 import { Request, Response, NextFunction } from "express";
 import { getAllProductFromDB, getProductsByIdFromDB } from "./product.service";
 
@@ -7,7 +8,7 @@ export const getAllProduct = async (
   next: NextFunction
 ) => {
   const products = await getAllProductFromDB();
-  res.send(products);
+  sendApiResponse(res, 200, true, products);
   console.log("hitted all product api", products);
 };
 export const getProductById = async (
@@ -17,6 +18,6 @@ export const getProductById = async (
 ) => {
   const { id } = req.params;
   const product = await getProductsByIdFromDB(id);
-  res.send(product);
+  sendApiResponse(res, 200, true, product);
   console.log("hitted id product api", product);
 };
